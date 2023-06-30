@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nike_shoe_app_ui/view/navigator.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,6 +11,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        fontFamily: 'Quicksand',
+      ),
+      title: 'Sneakers Shop App',
+      home: MainNavigator(),
+    );
   }
 }
