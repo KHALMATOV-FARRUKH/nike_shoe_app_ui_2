@@ -2,6 +2,7 @@ import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nike_shoe_app_ui/utils/constants.dart';
+import 'package:nike_shoe_app_ui/view/view.dart';
 
 class MainNavigator extends StatefulWidget {
   const MainNavigator({super.key});
@@ -15,7 +16,7 @@ class _MainNavigatorState extends State<MainNavigator> {
   int _selectedIndex = 0;
 
   List<Widget> _screens = [
-    Container(color: Colors.red),
+    HomeView(),
     Container(color: Colors.greenAccent),
     Container(color: Colors.orangeAccent),
     Container(color: Colors.purple),
@@ -25,7 +26,19 @@ class _MainNavigatorState extends State<MainNavigator> {
     setState(() {
       _selectedIndex = index;
     });
+    // _pageController.jumpToPage(_selectedIndex);
+    _pageController.animateToPage(_selectedIndex,
+        curve: Curves.linear, duration: Duration(milliseconds: 200));
   }
+
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
